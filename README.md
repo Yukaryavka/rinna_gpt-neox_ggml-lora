@@ -1,8 +1,19 @@
 # rinna_gpt-neox_ggml-lora
 
 ## Licence
-finetune.py - Apache License 2.0 / [tloen/alpaca-lora](https://github.com/tloen/alpaca-lora) 元リポジトリより継承
-merge_gptneox_lora.py - Apache License 2.0 [Yukaryavka](https://github.com/Yukaryavka) /  [lvwerra/trl/merge_peft_adapter.py](https://github.com/lvwerra/trl/blob/main/examples/sentiment/scripts/gpt-neox-20b_peft/merge_peft_adapter.py#L37) リポジトリ主が汎用利用可能な状態に仕上げましたが、レイヤーマージコード元のライセンスを継承しておきます。
+- finetune.py - Apache License 2.0
+
+[tloen/alpaca-lora](https://github.com/tloen/alpaca-lora)
+
+元リポジトリより継承
+
+- merge_gptneox_lora.py - Apache License 2.0
+
+[Yukaryavka](https://github.com/Yukaryavka)
+
+[lvwerra/trl: examples/sentiment/scripts/gpt-neox-20b_peft/merge_peft_adapter.py](https://github.com/lvwerra/trl/blob/main/examples/sentiment/scripts/gpt-neox-20b_peft/merge_peft_adapter.py#L37)
+
+リポジトリ主が汎用利用可能な状態に仕上げましたが、レイヤーマージコード元のライセンスを継承しておきます。
 
 ## What is it?
 
