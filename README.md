@@ -156,7 +156,7 @@ LoRAをマージするベースモデル名・ディレクトリパス・hugging
 
 **[[rinna/japanese-gpt-neox-3.6b-instruction-sft/pytorch_model.bin]]**
 
-SHA256: 0c6124c628f8ecc29be1b6ee0625670062340f5b99cfe543ccf049fa90e6207b
+SHA256: 0C6124C628F8ECC29BE1B6EE0625670062340F5B99CFE543CCF049FA90E6207B
 
 Size: 7365670537
 
