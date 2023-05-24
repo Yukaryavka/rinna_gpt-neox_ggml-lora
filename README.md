@@ -12,7 +12,7 @@
 
 - [redpajama.cpp](https://github.com/togethercomputer/redpajama.cpp)
 
-rinnnaといったgpt-neoxモデルをggmlに変換するのに必要な変換スクリプトが[/examples/redpajama/scripts](https://github.com/togethercomputer/redpajama.cpp/tree/master/examples/redpajama/scripts)に収められている
+rinnaといったgpt-neoxモデルをggmlに変換するのに必要な変換スクリプトが[/examples/redpajama/scripts](https://github.com/togethercomputer/redpajama.cpp/tree/master/examples/redpajama/scripts)に収められている
 
 - [alpaca-lora](https://github.com/tloen/alpaca-lora)
 
@@ -20,7 +20,7 @@ rinnnaといったgpt-neoxモデルをggmlに変換するのに必要な変換�
 
 # 作業前の大前提
 
-- LoRAを当てずにオリジナルの状態で使用できるまでの手順や方法は事前にこなしておいて理解を深めておくべき。私の環境ではこちらの記事を参考にquantize前で止めてlangchainから呼び出せるようにしてあります。<br>
+LoRAを当てずにオリジナルの状態で使用できるまでの手順や方法は事前にこなしておいて理解を深めておくべき。私の環境ではこちらの記事を参考にquantize前で止めてlangchainから呼び出せるようにしてあります。<br>
 
 [rinna 3Bをcppで動かす / by if001](https://note.com/if001/n/n6da85d0077d7)
 
@@ -44,7 +44,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 ### **2:**<br>
 
-[peft@75808eb2a6e7b4c3ed8aec003b6eeb30a2db1495](https://github.com/huggingface/peft/commit/75808eb2a6e7b4c3ed8aec003b6eeb30a2db1495) のコミットで追加された記述の一部を削除しないと出力される"adapter_model.bin"がデータセットのパラメータ数に関係なく1kb前後という明らかに異常があるデータが保存されます。どうやらウェイト保存が正常に行われていないらしく**2023/05/24時点で問題は解消していない**ようです。
+[peft@75808eb2a6e7b4c3ed8aec003b6eeb30a2db1495](https://github.com/huggingface/peft/commit/75808eb2a6e7b4c3ed8aec003b6eeb30a2db1495) のコミット辺りで追加された記述の一部を削除しないと出力される"adapter_model.bin"がデータセットのパラメータ数に関係なく1kb前後という明らかに異常があるデータが保存されます。どうやらウェイト保存が正常に行われていないらしく**2023/05/24時点で問題は解消していない**ようです。
 
 - **削除必須箇所について**
 
@@ -67,6 +67,24 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 - **参考コード**
 
 [lvwerra/trl: examples/sentiment/scripts/gpt-neox-20b_peft/merge_peft_adapter.py](https://github.com/lvwerra/trl/blob/main/examples/sentiment/scripts/gpt-neox-20b_peft/merge_peft_adapter.py#L37)
+
+レイヤーマージ処理部分のコードは上記のコードをそのまま使用するとエラーがL39で発生する為、以下の用に修正する必要がある
+
+- **Source**
+  
+```
+parent, target, target_name = model.base_model._get_submodules(key)
+```
+
+- **EDITED**
+
+```
+parent, target, target_name = _get_submodules(model.base_model.model, key)
+```
+
+- **上記修正に関連するissue**
+
+[Cannot run stackllama example](https://github.com/lvwerra/trl/issues/287)
 
 # LoRAチューニング実行からマージまでのワークフロー
 
