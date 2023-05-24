@@ -151,15 +151,21 @@ LoRAをマージするベースモデル名・ディレクトリパス・hugging
 ## 成果報告
 ※この成果報告はこちらの環境でテストした際の結果を報告しているだけです。確実にマージが成功しているかの判断材料としては、客観的意見が無いと信憑性に欠けることは明らかでしょう。このリポジトリを閲覧されている方で報告や分析を行って頂ける方はどうぞよろしくお願いします。
 
-### Checksum
-- Official Original
-rinna/japanese-gpt-neox-3.6b-instruction-sft/pytorch_model.bin
+### ＞ Checksum
+- **Official Original**
+
+**[[rinna/japanese-gpt-neox-3.6b-instruction-sft/pytorch_model.bin]]**
+
 SHA256: 0c6124c628f8ecc29be1b6ee0625670062340f5b99cfe543ccf049fa90e6207b
+
 Size: 7365670537
 
-- Base model + LoRA model Merged
-Merged-rinna-3.6b-inst-lora-siz/pytorch_model.bin
+- **Merged Base model + LoRA model**
+
+**[[Merged-rinna-3.6b-inst-lora-siz/pytorch_model.bin]]**
+
 SHA256: 3CD1DC91FDF0B3EBD118329E127A917C1697D40BFA363906BBF0B09D98DBC166
+
 Size: 7365674005
 
 ### ＞ **前提条件**
