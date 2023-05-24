@@ -68,7 +68,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 [lvwerra/trl: examples/sentiment/scripts/gpt-neox-20b_peft/merge_peft_adapter.py](https://github.com/lvwerra/trl/blob/main/examples/sentiment/scripts/gpt-neox-20b_peft/merge_peft_adapter.py#L37)
 
-レイヤーマージ処理部分のコードは上記のコードをそのまま使用するとエラーがL39で発生する為、以下の用に修正する必要がある
+レイヤーマージ処理部分のコードは上記のコードをそのまま使用するとエラーがL39で発生する為、以下の用に修正しfrom定義を追加する必要がある
 
 - **Source**
   
@@ -80,6 +80,12 @@ parent, target, target_name = model.base_model._get_submodules(key)
 
 ```
 parent, target, target_name = _get_submodules(model.base_model.model, key)
+```
+
+- **追加定義**
+
+```
+from peft.utils import _get_submodules
 ```
 
 - **上記修正に関連するissue**
