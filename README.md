@@ -1,5 +1,9 @@
 # rinna_gpt-neox_ggml-lora
 
+## Licence
+finetune.py - Apache License 2.0 / [tloen/alpaca-lora](https://github.com/tloen/alpaca-lora) 元リポジトリより継承
+merge_gptneox_lora.py - Apache License 2.0 [Yukaryavka](https://github.com/Yukaryavka) /  [lvwerra/trl/merge_peft_adapter.py](https://github.com/lvwerra/trl/blob/main/examples/sentiment/scripts/gpt-neox-20b_peft/merge_peft_adapter.py#L37) リポジトリ主が汎用利用可能な状態に仕上げましたが、レイヤーマージコード元のライセンスを継承しておきます。
+
 ## What is it?
 
 このリポジトリは[rinna/japanese-gpt-neox]([URL](https://huggingface.co/rinna))といったgpt-neoxベースのモデルを[ggml]([URL](https://github.com/ggerganov/ggml))形式のモデルに変換して使用することが前提の場合においてLoRAチューニングの成果物であるアダプタモデルをggmlモデルに適応して利用したい場合に必要なスクリプト改良とマージ用スクリプトを参考用・研究用に置いています。
